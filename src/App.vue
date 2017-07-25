@@ -16,6 +16,11 @@ export default {
   name: 'app',
   components: {
     Nav
+  },
+  mounted () {
+    if (!this.$store.state.isLoggedIn) {
+      this.$router.push('login')
+    }
   }
 }
 </script>
