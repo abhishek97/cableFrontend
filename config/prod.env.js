@@ -1,4 +1,4 @@
 module.exports = {
   NODE_ENV: '"production"',
-  API_URL: '"http://api.cable.alphanetbroadband.com/api/"'
+  API_URL: '"https://api.cable.alphanetbroadband.com/api/"'
 }
