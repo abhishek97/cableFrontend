@@ -1,5 +1,7 @@
 # cable-frontend
 
+[![Build Status](https://travis-ci.org/abhishek97/cableFrontend.svg?branch=master)](https://travis-ci.org/abhishek97/cableFrontend)
+
 > A Vue.js project
 
 ## Build Setup

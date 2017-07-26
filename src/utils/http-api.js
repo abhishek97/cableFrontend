@@ -6,8 +6,5 @@
 import axios from 'axios'
 
 export default axios.create({
-  baseURL: `http://localhost:3000/api/`
-  /*  headers: {
-    Authorization: 'Bearer {token}'
-  } */
+  baseURL: process.env.API_URL
 })
