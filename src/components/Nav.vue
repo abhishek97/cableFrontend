@@ -5,11 +5,9 @@
       <b-nav-item active>
         <router-link to="/home"> Home </router-link>
       </b-nav-item>
-      <b-nav-item>
+      <b-nav-item v-if="this.$store.state.isLoggedIn">
         <router-link to="/addPayment"> Payment </router-link>
       </b-nav-item>
-      <b-nav-item>Another Link</b-nav-item>
-      <b-nav-item disabled>Disabled</b-nav-item>
     </b-nav>
   </div>
 </template>
