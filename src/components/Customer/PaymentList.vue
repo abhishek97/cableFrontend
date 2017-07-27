@@ -31,6 +31,7 @@
       </tr>
       </tbody>
     </table>
+
   </div>
 </template>
 
@@ -51,12 +52,18 @@
     },
     methods: {
       generateBill (payment) {
+        this.$emit('loading', true)
         API.get(`payments/${payment.id}/bill`).then(response => {
+          this.$emit('loading', false)
           this.$emit('refreshModel')
         }).catch(err => {
+          this.$emit('loading', false)
           console.error(err)
         })
       }
     }
   }
 </script>
+
+
+

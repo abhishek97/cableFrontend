@@ -24,21 +24,27 @@
           </li>
         </ul>
 
-        <PaymentList :payments="customer.payments" v-on:refreshModel="fetchCustomer"></PaymentList>
+        <PaymentList :payments="customer.payments" v-on:refreshModel="fetchCustomer" v-on:loading="setLoading"></PaymentList>
       </div>
+    </div>
+    <div class="loading" v-show="isLoading">
+      <sync-loader :loading="isLoading"></sync-loader>
+    </div>
     </div>
   </div>
 </template>
 
 <script type="text/babel">
   import API from '@/utils/http-api.js'
+  import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
   import PaymentList from '@/components/Customer/PaymentList.vue'
   export default {
     created () {
       this.fetchCustomer()
     },
     components: {
-      PaymentList
+      PaymentList,
+      SyncLoader
     },
     data () {
       return {
@@ -58,7 +64,40 @@
         }).catch(err => {
           console.error(err)
         })
+      },
+      setLoading (value) {
+        this.isLoading = value
       }
     }
   }
 </script>
+
+<style scoped>
+  /* Absolute Center Spinner */
+  .loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 10em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Transparent Overlay */
+  .loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+
+</style>
