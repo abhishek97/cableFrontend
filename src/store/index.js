@@ -5,11 +5,23 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersist from 'vuex-localstorage'
 import API from '../utils/http-api'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersist({
+    namespace: 'cableApiAlphanetbroadbandCom',
+    initialState: {
+      isLoggedIn: false,
+      username: null,
+      password: null,
+      jwt: ''
+    },
+    // ONE_DAY
+    expires: (24 * 60 * 60 * 1e3)
+  })],
   state: {
     isLoggedIn: false,
     username: null,
@@ -18,6 +30,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setJwt (state, val) {
+      API.defaults.headers.common['Authorization'] = `Bearer ${val}`
       state.jwt = val
     },
     logIn (state) {
@@ -37,7 +50,6 @@ export default new Vuex.Store({
         password: state.password
       }).then(response => {
         const jwt = response.data
-        API.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
         commit('setJwt', jwt)
         commit('logIn')
       })

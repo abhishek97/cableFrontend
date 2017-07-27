@@ -11,11 +11,15 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Nav from './components/Nav.vue'
+import API from './utils/http-api'
 
 export default {
   name: 'app',
   components: {
     Nav
+  },
+  created () {
+    API.defaults.headers.common['Authorization'] = `Bearer ${this.$store.state.jwt}`
   },
   mounted () {
     if (!this.$store.state.isLoggedIn) {
