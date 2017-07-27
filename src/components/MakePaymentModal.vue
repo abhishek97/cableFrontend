@@ -43,7 +43,7 @@
         }).then(response => {
           const payment = response.data
           alert('Payment Successful Txn ID: 2017' + payment.id)
-          this.$router.push('home')
+          this.$router.push('/addPayment')
         }).catch(err => {
           console.error(err)
         })

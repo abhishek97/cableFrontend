@@ -19,7 +19,7 @@ export default {
   },
   mounted () {
     if (!this.$store.state.isLoggedIn) {
-      this.$router.push('login')
+      this.$router.replace('/login')
     }
   }
 }
