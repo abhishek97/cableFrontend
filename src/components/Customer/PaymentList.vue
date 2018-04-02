@@ -58,7 +58,10 @@
           this.$emit('refreshModel')
         }).catch(err => {
           this.$emit('loading', false)
-          console.error(err)
+          this.$store.commit('setError', err.response)
+          this.$router.push({
+            name: 'error'
+          })
         })
       }
     }

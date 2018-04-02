@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home.vue'
-import AddPayment from '@/components/AddPayment.vue'
-import Customer from '@/components/Customer/Index.vue'
+import PaymentsIndex from '@/components/Payments/Index.vue'
+import ViewCustomer from '@/components/Customer/ViewCustomer.vue'
+import AddCustomer from '@/components/Customer/AddCustomer.vue'
+import CustomerIndex from '@/components/Customer/Index.vue'
+import ErrorComponent from '@/components/Error.vue'
 import Login from '@/components/Login.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
+  linkActiveClass: 'active',
   routes: [
     {
       path: '/home',
@@ -19,14 +24,29 @@ export default new Router({
       component: Login
     },
     {
-      path: '/addPayment',
-      name: 'AddPayment',
-      component: AddPayment
+      path: '/payments',
+      name: 'Payments',
+      component: PaymentsIndex
     },
     {
-      path: '/customer/:customerId',
-      name: 'customer',
-      component: Customer
+      path: '/customers',
+      name: 'customersIndex',
+      component: CustomerIndex
+    },
+    {
+      path: '/customers/create',
+      name: 'addCustomer',
+      component: AddCustomer
+    },
+    {
+      path: '/customers/:customerId',
+      name: 'viewCustomer',
+      component: ViewCustomer
+    },
+    {
+      path: '/error',
+      name: 'error',
+      component: ErrorComponent
     }
   ]
 })

@@ -41,6 +41,9 @@ export default new Vuex.Store({
     },
     changePassword (state, val) {
       state.password = val
+    },
+    setError (state, val) {
+      state.error = val
     }
   },
   actions: {

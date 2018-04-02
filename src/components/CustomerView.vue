@@ -57,7 +57,7 @@
       },
       transitionToCustomer (id) {
         this.$router.push({
-          name: 'customer',
+          name: 'viewCustomer',
           params: {
             customerId: id
           }

@@ -42,10 +42,13 @@
           amount: this.amount
         }).then(response => {
           const payment = response.data
-          alert('Payment Successful Txn ID: 2017' + payment.id)
+          alert('Payment Successful Txn ID: 2018' + payment.id)
           this.$router.push('/addPayment')
         }).catch(err => {
-          console.error(err)
+          this.$store.commit('setError', err.response)
+          this.$router.push({
+            name: 'error'
+          })
         })
         console.log(this.customer, 'Amt', this.amount)
       }

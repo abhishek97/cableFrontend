@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Add Payment Form</h2>
+    <h2>Payments Form</h2>
     <div class="card">
       <div class="card-block">
 
@@ -60,9 +60,12 @@
         }).then(response => {
           this.customers = response.data
           this.isLoading = false
-        }).catch(e => {
+        }).catch(err => {
           this.isLoading = false
-          console.error(e)
+          this.$store.commit('setError', err.response)
+          this.$router.push({
+            name: 'error'
+          })
         })
       }
     }
