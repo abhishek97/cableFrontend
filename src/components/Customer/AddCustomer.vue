@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Add Customer</h1>
-    <Editor :customer=customer />
+    <Editor/>
   </div>
 </template>
 
@@ -10,11 +10,6 @@ import Editor from '@/components/Customer/Editor.vue'
 export default {
   components: {
     Editor
-  },
-  data () {
-    return {
-      customer: {}
-    }
   }
 }
 </script>

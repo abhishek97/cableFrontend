@@ -13,6 +13,9 @@
       <b-nav-item v-if="this.$store.state.isLoggedIn" :active="isCustomerActive">
         <router-link to="/customers"> Customer </router-link>
       </b-nav-item>
+      <b-nav-item v-if="this.$store.state.isLoggedIn" :active="isStbsActive">
+        <router-link to="/stbs"> Stb Master </router-link>
+      </b-nav-item>
     </b-nav>
   </div>
 </template>
@@ -27,6 +30,9 @@ export default {
     },
     isCustomerActive () {
       return ['addCustomer', 'customersIndex'].includes(this.$route.name)
+    },
+    isStbsActive () {
+      return ['stbsIndex'].includes(this.$route.name)
     }
   }
 }

@@ -5,6 +5,8 @@ import PaymentsIndex from '@/components/Payments/Index.vue'
 import ViewCustomer from '@/components/Customer/ViewCustomer.vue'
 import AddCustomer from '@/components/Customer/AddCustomer.vue'
 import CustomerIndex from '@/components/Customer/Index.vue'
+import StbsIndex from '@/components/Stbs/Index.vue'
+import AddStb from '@/components/Stbs/addStb.vue'
 import ErrorComponent from '@/components/Error.vue'
 import Login from '@/components/Login.vue'
 Vue.use(Router)
@@ -42,6 +44,16 @@ export default new Router({
       path: '/customers/:customerId',
       name: 'viewCustomer',
       component: ViewCustomer
+    },
+    {
+      path: '/stbs',
+      name: 'stbsIndex',
+      component: StbsIndex
+    },
+    {
+      path: '/stbs/create',
+      name: 'stbsCreate',
+      component: AddStb
     },
     {
       path: '/error',

@@ -20,10 +20,13 @@
                 </div>
                 <div class="form-group">
                     <label>VC No</label>
-                    <b-form-input type="text"
-                                placeholder="Enter Vc number of the customer"
-                                v-model="customer.vc_no"
-                    ></b-form-input>
+                    <model-list-select :list="stbList"
+                             option-value="id"
+                             option-text="vc_no"
+                             v-model="customer.stb"
+                             placeholder="Enter a VC Number"
+                             @searchchange="searchStb">
+                    </model-list-select>
                     <small class="text-muted">*Required</small>
                 </div>
                 <div class="form-group">
@@ -51,11 +54,17 @@
 </template>
 
 <script type="text/babel">
+import { ModelListSelect } from 'vue-search-select'
+import qs from 'qs'
 import API from '@/utils/http-api.js'
 export default {
-  props: {
-    customer: {
-      type: Object
+  data () {
+    return {
+      customer: {
+        stb: {}
+      },
+      stbList: [],
+      stbId: null
     }
   },
   methods: {
@@ -71,7 +80,25 @@ export default {
           name: 'error'
         })
       })
+    },
+    async searchStb (searchText) {
+      const response = await API.get('/stbs', {
+        params: {
+          filter: {
+            vc_no: {
+              $like: `%${searchText}%`
+            }
+          }
+        },
+        paramsSerializer (params) {
+          return qs.stringify(params, {arrayFormat: 'brackets'})
+        }
+      })
+      this.stbList = response.data
     }
+  },
+  components: {
+    ModelListSelect
   }
 }
 </script>

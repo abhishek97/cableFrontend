@@ -3,27 +3,34 @@
     <h1>Customer #{{customer.id}}</h1>
     <div class="card" v-if="customer.id">
       <div class="card-block">
-        <ul>
-          <li>
-            Name: {{customer.name}}
-          </li>
-          <li>
-            VC: {{customer.vc_no}}
-          </li>
-          <li>
-            Address: {{customer.address}}
-          </li>
-          <li>
-            Mobile: {{customer.mobile}}
-          </li>
-          <li>
-            Cable Network: {{customer.cable_network}}
-          </li>
-          <li>
-            Arrears: {{customer.arrears}}
-          </li>
-        </ul>
-
+        <div class="row">  
+          <div class="col-md-4">
+            <ul>
+              <li>
+                Name: {{customer.name}}
+              </li>
+              <li>
+                OLD VCs: {{customer.vc_no}}
+              </li>
+              <li>
+                Address: {{customer.address}}
+              </li>
+              <li>
+                Mobile: {{customer.mobile}}
+              </li>
+              <li>
+                Cable Network: {{customer.cable_network}}
+              </li>
+              <li>
+                Arrears: {{customer.arrears}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-lg btn-primary">Re-assign VC</button>
+          </div>
+        </div>
         <PaymentList :payments="customer.payments" v-on:refreshModel="fetchCustomer" v-on:loading="setLoading"></PaymentList>
       </div>
     </div>
