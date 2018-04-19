@@ -34,7 +34,7 @@
                     <label>Vc Number</label>
                     <b-form-textarea type="text"
                                 placeholder="Remarks (optional)"
-                                rows="30"
+                                rows="3"
                                 v-model="stb.remarks"
                     ></b-form-textarea>
                     <small class="text-muted">Optional</small>
@@ -57,6 +57,7 @@ export default {
   data () {
     return {
       stb: {
+        remarks: '',
         agent: {},
         cable_network: {}
       },
