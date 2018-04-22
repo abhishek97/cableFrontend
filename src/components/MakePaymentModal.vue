@@ -62,7 +62,7 @@
         console.log(this.customer, 'Amt', this.amount)
       },
       popLast (string = '') {
-        return string.split('').pop()
+        return string.split(',').pop()
       }
     }
   }

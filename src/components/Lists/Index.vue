@@ -8,16 +8,22 @@
       <br>To be expired (Collect Payment)
       <br> <CollectPaymentCustomer></CollectPaymentCustomer>
     </b-tab>
+    <b-tab title="Daily Collection" @click="changeActiveTab('dailyCollection')">
+      <br>Today's Collection
+      <br> <DailyCollection></DailyCollection>
+    </b-tab>
   </b-tabs>
 </template>
 <script>
 import IncompleteCafCustomer from './IncompleteCafCustomer.vue'
 import CollectPaymentCustomer from './CollectPaymentCustomer.vue'
+import DailyCollection from './DailyCollection.vue'
 
 export default {
   components: {
     IncompleteCafCustomer,
-    CollectPaymentCustomer
+    CollectPaymentCustomer,
+    DailyCollection
   },
   data () {
     return {

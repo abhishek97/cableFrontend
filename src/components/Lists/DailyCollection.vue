@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <div class="card">
+	<div>
+		<div class="card">
         <div class="card-block">
 
           <div class="form-group">
@@ -10,30 +10,29 @@
                         v-model="vc_no"
                         @change="changed"
           ></b-form-input>
-          <small class="text-muted">We will convert your name to lowercase instantly</small>
+          <small class="text-muted">Filter Results by Vc Number</small>
           </div>
           <div class="loadingContainer text-center">
             <sync-loader :loading="isLoading"></sync-loader>
           </div>
-          <CustomerView :customers=customerList v-if="isNotLoading"></CustomerView>
+          <PaymentsView :payments=paymentList v-if="isNotLoading"></PaymentsView>
         </div>
       </div>
-  </div>
+	</div>
 </template>
-
 <script>
-import CustomerView from '@/components/CustomerView.vue'
 import API from '@/utils/http-api.js'
+import PaymentsView from '@/components/Payments/PaymentsView.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 
 export default {
   components: {
-    CustomerView,
+    PaymentsView,
     SyncLoader
   },
   data () {
     return {
-      customerList: [],
+      paymentList: [],
       vc_no: '',
       isLoading: false
     }
@@ -44,38 +43,22 @@ export default {
     }
   },
   mounted () {
-    this.isLoading = true
-    API.get('customers/collectPayments')
-    .then(response => {
-      this.customerList = response.data
-      this.isLoading = false
-    })
-    .catch(err => {
-      this.isLoading = false
-      this.$store.commit('setError', err.response)
-      this.$router.push({
-        name: 'error'
-      })
-    })
+    this._loadData()
   },
   methods: {
     changed () {
+      this._loadData()
+    },
+    _loadData () {
       this.isLoading = true
-      API.get('customers/collectPayments', {
+      API.get('payments/daily', {
         params: {
           vc_no: this.vc_no
         }
       })
       .then(response => {
-        this.customerList = response.data
+        this.paymentList = response.data
         this.isLoading = false
-      })
-      .catch(err => {
-        this.isLoading = false
-        this.$store.commit('setError', err.response)
-        this.$router.push({
-          name: 'error'
-        })
       })
     }
   }
