@@ -8,12 +8,22 @@
         <li>Network: {{customer.stb.cable_network.name}} </li>
       </ul>
       <form @submit.stop.prevent="submit">
-        <div class="form-group">
-        <label> Amount: </label>
-        <b-form-input type="number" placeholder="Enter Amount" v-model="amount"></b-form-input>
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+            <label> Amount: </label>
+            <b-form-input type="number" placeholder="Enter Amount" v-model="amount"></b-form-input>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+            <label> Months: </label>
+            <b-form-input type="number" placeholder="Enter Months (Default 1)" v-model="months"></b-form-input>
+            </div>
+          </div>
         </div>
         <div class="form-group">
-        <label> Ramarks : </label>
+        <label> Remarks : </label>
         <b-form-input type="text" placeholder="Remarks(optional)" v-model="remarks"></b-form-input>
         </div>
       </form>
@@ -34,7 +44,8 @@
     },
     data () {
       return {
-        amount: 0
+        amount: null,
+        months: 1
       }
     },
     methods: {
@@ -47,6 +58,7 @@
         API.post('payments', {
           customerId: this.customer.id,
           stbId: this.customer.stb.id,
+          months: this.months,
           remarks: this.remarks,
           amount: this.amount
         }).then(response => {

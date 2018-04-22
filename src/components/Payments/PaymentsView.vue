@@ -6,6 +6,7 @@
                   <td>#</td>
                   <td>Vc No</td>
                   <td>Amount</td>
+                  <td>Months</td>
                   <td>Customer ID</td>
                   <td>Added By</td>
               </tr>
@@ -15,6 +16,7 @@
                   <td>{{index+1}}</td>
                   <td>{{payment.stb.vc_no}}</td>
                   <td>{{payment.amount}}</td>
+                  <td>{{payment.months}}</td>
                   <td class="pointer" @click="transitionToCustomer(payment.customer.id)">
                     <a href="#" style="width:10px">
                       {{payment.customer.id}}
