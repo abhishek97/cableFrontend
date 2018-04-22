@@ -5,20 +5,28 @@
         <tr>
           <td>#</td>
           <td>Name</td>
-          <td>Vc No</td>
+          <td>Last Active Vc No</td>
           <td>Network</td>
           <td>Address</td>
           <td>Actions</td>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="customer of customers">
+        <tr v-for="customer of customers" :key="customer.id">
           <td>
             <button type="button" class="btn btn-link"  @click="transitionToCustomer(customer.id)" >{{customer.id}}</button>
           </td>
           <td>{{customer.name}}</td>
-          <td>{{customer.vc_no}}</td>
-          <td>{{customer.cable_network}}</td>
+          <td>
+            <span>
+              <b>Last Active {{popLast (customer.vc_no_trail)}} </b>
+              <br>
+              <p>
+                Trail: {{customer.vc_no_trail}}
+              </p>
+            </span>
+            </td>
+          <td><span v-if="customer.stb">{{customer.stb.cable_network.name }}</span></td>
           <td>{{customer.address}}</td>
           <b-btn v-b-modal.makePaymentModal
                  variant="primary"
@@ -51,6 +59,9 @@
       }
     },
     methods: {
+      popLast (string) {
+        return string.split(',').pop()
+      },
       selectCustomer (customer) {
         this.selectedCustomer = customer
         // this.$root.$emit('show::modal', 'makePaymentModal')

@@ -17,8 +17,6 @@
           <sync-loader :loading="isLoading"></sync-loader>
         </div>
         <CustomerView :customers=customers v-if="isNotLoading"></CustomerView>
-
-        </table>
       </div>
     </div>
   </div>

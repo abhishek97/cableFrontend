@@ -38,14 +38,6 @@
                     <small class="text-muted">*Required</small>
                 </div>
                 <div class="form-group">
-                    <label>Cable Network</label>
-                    <b-form-input type="text"
-                                placeholder="Enter Cable Network name of the customer"
-                                v-model="customer.cable_network"
-                    ></b-form-input>
-                    <small class="text-muted">*Required</small>
-                </div>
-                <div class="form-group">
                     <button type="button" class="btn btn-primary" @click="submit()">Submit</button>
                 </div>
             </div>
@@ -85,6 +77,7 @@ export default {
       const response = await API.get('/stbs', {
         params: {
           filter: {
+            status: 0,
             vc_no: {
               $like: `%${searchText}%`
             }

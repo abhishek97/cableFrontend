@@ -3,12 +3,19 @@
     <b-modal id="makePaymentModal" title="Enter Payment Amount" @ok="submit">
       <ul>
         <li>Name: {{customer.name}} </li>
-        <li>VC: {{customer.vc_no}} </li>
+        <li>VC: {{ popLast(customer.vc_no_trail)}} </li>
         <li>Address: {{customer.address}} </li>
-        <li>Network: {{customer.cable_network}} </li>
+        <li>Network: {{customer.stb.cable_network.name}} </li>
       </ul>
       <form @submit.stop.prevent="submit">
+        <div class="form-group">
+        <label> Amount: </label>
         <b-form-input type="number" placeholder="Enter Amount" v-model="amount"></b-form-input>
+        </div>
+        <div class="form-group">
+        <label> Ramarks : </label>
+        <b-form-input type="text" placeholder="Remarks(optional)" v-model="remarks"></b-form-input>
+        </div>
       </form>
 
     </b-modal>
@@ -22,7 +29,8 @@
     props: {
       customer: {
         type: Object
-      }
+      },
+      remarks: ''
     },
     data () {
       return {
@@ -38,7 +46,8 @@
 
         API.post('payments', {
           customerId: this.customer.id,
-          vc_no: this.customer.vc_no,
+          stbId: this.customer.stb.id,
+          remarks: this.remarks,
           amount: this.amount
         }).then(response => {
           const payment = response.data
@@ -51,6 +60,9 @@
           })
         })
         console.log(this.customer, 'Amt', this.amount)
+      },
+      popLast (string = '') {
+        return string.split('').pop()
       }
     }
   }

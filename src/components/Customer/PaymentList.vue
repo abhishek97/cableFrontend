@@ -23,9 +23,9 @@
           <button
             class="btn btn-secondary btn-sm"
             @click="generateBill(payment)"
-            v-else
+            disabled
           >
-              Generate Billi Clinton
+              Generate Bill
           </button>
         </td>
       </tr>

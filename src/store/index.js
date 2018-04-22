@@ -32,6 +32,13 @@ export default new Vuex.Store({
     setJwt (state, val) {
       API.defaults.headers.common['Authorization'] = `Bearer ${val}`
       state.jwt = val
+      state.password = null
+    },
+    clearJwt (state, val) {
+      delete API.defaults.headers.common['Authorization']
+      state.jwt = null
+      state.isLoggedIn = false
+      state.username = null
     },
     logIn (state) {
       state.isLoggedIn = true

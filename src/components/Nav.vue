@@ -4,7 +4,7 @@
       <b-nav-item>  
         <router-link to="/home"> PMS </router-link>
       </b-nav-item>
-      <b-nav-item :active="isHomeActive">
+      <b-nav-item v-if="this.$store.state.isLoggedIn" :active="isHomeActive">
         <router-link to="/home"> Home </router-link>
       </b-nav-item>
       <b-nav-item v-if="this.$store.state.isLoggedIn" :active="isPaymentsActive">
@@ -14,7 +14,13 @@
         <router-link to="/customers"> Customer </router-link>
       </b-nav-item>
       <b-nav-item v-if="this.$store.state.isLoggedIn" :active="isStbsActive">
-        <router-link to="/stbs"> Stb Master </router-link>
+        <router-link to="/stbs"> Stb </router-link>
+      </b-nav-item>
+      <b-nav-item v-if="this.$store.state.isLoggedIn" :active="isListsActive">
+        <router-link to="/lists"> Lists </router-link>
+      </b-nav-item>
+      <b-nav-item class="right" v-if="this.$store.state.isLoggedIn">
+        <a @click="logout"> Logout </a>
       </b-nav-item>
     </b-nav>
   </div>
@@ -33,8 +39,25 @@ export default {
     },
     isStbsActive () {
       return ['stbsIndex'].includes(this.$route.name)
+    },
+    isListsActive () {
+      return ['listsIndex'].includes(this.$route.name)
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.commit('clearJwt')
+      this.$router.push({
+        name: 'Login'
+      })
     }
   }
 }
 </script>
+
+<style scoped>
+.right {
+    margin-left: 60%;
+}
+</style>
 

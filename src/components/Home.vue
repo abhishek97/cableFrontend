@@ -20,6 +20,11 @@ export default {
     API.get('users/me')
     .then(response => {
       this.user = response.data
+    }).catch(err => {
+      console.error(err)
+      this.$router.push({
+        name: 'Login'
+      })
     })
 
     const tick = function () {

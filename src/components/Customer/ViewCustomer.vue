@@ -28,7 +28,7 @@
           </div>
           <div class="col-md-4"></div>
           <div class="col-md-4">
-            <button type="button" class="btn btn-lg btn-primary">Re-assign VC</button>
+            <button type="button" class="btn btn-lg btn-primary" disabled>Re-assign VC</button>
           </div>
         </div>
         <PaymentList :payments="customer.payments" v-on:refreshModel="fetchCustomer" v-on:loading="setLoading"></PaymentList>
