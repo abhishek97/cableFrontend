@@ -24,7 +24,7 @@
                              option-value="id"
                              option-text="vc_no"
                              v-model="customer.stb"
-                             placeholder="Enter a VC Number"
+                             placeholder="Start typing a VC Number"
                              @searchchange="searchStb">
                     </model-list-select>
                     <small class="text-muted">*Required</small>

@@ -16,7 +16,7 @@
                              option-value="id"
                              option-text="name"
                              v-model="stb.agent"
-                             placeholder="Select an Agent"
+                             placeholder="Start Typing an Agent name"
                              @searchchange="searchAgent">
                     </model-list-select>
                 </div>
@@ -26,7 +26,7 @@
                              option-value="id"
                              option-text="name"
                              v-model="stb.cable_network"
-                             placeholder="Select an Cable Network"
+                             placeholder="Start Typing a Cable Network"
                              @searchchange="searchCableNetworks">
                     </model-list-select>
                 </div>
