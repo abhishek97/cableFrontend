@@ -10,6 +10,7 @@
           <td>Cable Network Name</td> 
           <td>Added By</td> 
           <td>Created At</td>
+          <td> Actions </td>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,7 @@
           <td>{{stb.cable_network.name}}</td> 
           <td>{{stb.createdBy.username}}</td> 
           <td>{{stb.createdAt}}</td>
+          <td><slot :name=stb.id ></slot></td>
         </tr>
       </tbody>
     </table>

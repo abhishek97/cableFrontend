@@ -5,8 +5,8 @@
         <router-link to="/stbs/create">
           <button type="button" class="btn btn-primary btn-lg">+ Add </button>
         </router-link>
-        <router-link to="/stbs/create">
-          <button type="button" class="btn btn-secondary btn-lg" disabled>+ Return STB </button>
+        <router-link to="/stbs/return">
+          <button type="button" class="btn btn-danger btn-lg">+ Return/Re-assign STB </button>
         </router-link>
       </div>
     </div>

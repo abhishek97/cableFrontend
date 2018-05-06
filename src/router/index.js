@@ -7,6 +7,8 @@ import AddCustomer from '@/components/Customer/AddCustomer.vue'
 import CustomerIndex from '@/components/Customer/Index.vue'
 import StbsIndex from '@/components/Stbs/Index.vue'
 import AddStb from '@/components/Stbs/addStb.vue'
+import ReturnStb from '@/components/Stbs/returnStb.vue'
+import ReassignStb from '@/components/Stbs/reassignStb.vue'
 import Lists from '@/components/Lists/Index.vue'
 import ErrorComponent from '@/components/Error.vue'
 import Login from '@/components/Login.vue'
@@ -55,6 +57,16 @@ export default new Router({
       path: '/stbs/create',
       name: 'stbsCreate',
       component: AddStb
+    },
+    {
+      path: '/stbs/return',
+      name: 'stbReturn',
+      component: ReturnStb
+    },
+    {
+      path: '/stbs/return/:stbId',
+      name: 'stbReAssign',
+      component: ReassignStb
     },
     {
       path: '/lists',
